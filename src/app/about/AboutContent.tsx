@@ -140,10 +140,10 @@ export function AboutContent() {
 
                 <div className="space-y-6 text-lg font-light leading-relaxed text-ink-muted max-w-xl">
                   <p>
-                    Glass Ivoire is a premier manufacturer and distributor of high-quality architectural glass and aluminum systems. We serve as the vital link between visionary architectural design and flawless physical execution in Côte d'Ivoire.
+                    Glass Ivoire is a premier manufacturer and distributor of high-quality architectural glass and aluminum systems. Established in June 2023 at Boulevard de Marseille, Treichville, we serve as the vital link between visionary architectural design and flawless physical execution in Côte d'Ivoire.
                   </p>
                   <p>
-                    Our mission is simple yet ambitious: to deliver durable, elegant glazing solutions accompanied by unmatched local service. We blend technical rigor with premium materials, ensuring every facade, partition, and structural enclosure we produce enhances modern design, maximizes safety, and optimizes energy efficiency.
+                    Our mission is simple yet ambitious: to deliver durable, elegant glazing solutions accompanied by unmatched local service. We blend technical rigor with premium materials like endlessly recyclable Hydro CIRCAL aluminium, ensuring every facade, partition, and structural enclosure we produce enhances modern design, maximizes safety, and optimizes energy efficiency.
                   </p>
                 </div>
               </motion.div>
@@ -181,7 +181,7 @@ export function AboutContent() {
                   transition={{ duration: 0.6, delay: 0.4, ease }}
                   className="absolute top-1/2 left-[15%] w-24 h-24 bg-blue-light/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-glow-blue animate-float"
                 >
-                  <span className="text-white font-bold tracking-widest text-[10px] uppercase text-center leading-tight">Since<br/>2014</span>
+                  <span className="text-white font-bold tracking-widest text-[10px] uppercase text-center leading-tight">Since<br/>2023</span>
                 </motion.div>
               </div>
 

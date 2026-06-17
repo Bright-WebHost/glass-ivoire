@@ -20,8 +20,8 @@ const products = [
     title: 'Aluminum Windows',
     description: 'Thermally broken profiles for tropical climates. Engineered to ISO 9001 tolerances.',
     icon: LayoutGrid,
-    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1600&auto=format&fit=crop',
-    link: '/products/windows',
+    image: '/glass-window.jpg',
+    link: '/products',
     number: '01',
   },
   {
@@ -29,8 +29,8 @@ const products = [
     title: 'Aluminum Doors',
     description: 'High-security, aesthetically refined entrances for commercial and luxury residential.',
     icon: DoorClosed,
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600&auto=format&fit=crop',
-    link: '/products/doors',
+    image: '/alum-door.jpg',
+    link: '/products',
     number: '02',
   },
   {
@@ -38,17 +38,17 @@ const products = [
     title: 'Sliding Doors',
     description: 'Ultra-slim rail systems with seamless indoor-outdoor spatial integration.',
     icon: PanelLeftClose,
-    image: 'https://images.unsplash.com/photo-1541888078652-5ad26a312015?q=80&w=1600&auto=format&fit=crop',
-    link: '/products/sliding-doors',
+    image: '/glassdoor.jpg',
+    link: '/products',
     number: '03',
   },
   {
     id: 4,
-    title: 'Facades',
+    title: 'Facades (TENTAL)',
     description: 'Full curtain-wall and structural glazing systems defining modern skylines.',
     icon: Grid3X3,
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop',
-    link: '/products/facades',
+    image: '/Facades.jpg',
+    link: '/products',
     number: '04',
   },
   {
@@ -56,8 +56,8 @@ const products = [
     title: 'Fire-Resistant Systems',
     description: 'Certified EI30–EI120 barriers integrating safety without compromise on aesthetics.',
     icon: Flame,
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop',
-    link: '/products/fire-resistant',
+    image: '/fire.jpg',
+    link: '/products',
     number: '05',
   },
   {
@@ -65,8 +65,8 @@ const products = [
     title: 'Interior Walls',
     description: 'Floor-to-ceiling glass partitions shaping open, luminous workspace environments.',
     icon: GripVertical,
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1600&auto=format&fit=crop',
-    link: '/products/interior-walls',
+    image: '/interiorwalls.jpg',
+    link: '/products',
     number: '06',
   },
   {
@@ -74,8 +74,8 @@ const products = [
     title: 'Sun Visors',
     description: 'Precision-angled brise-soleil elements reducing solar gain without blocking daylight.',
     icon: SunDim,
-    image: 'https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1600&auto=format&fit=crop',
-    link: '/products/sun-visors',
+    image: '/sunvisitor.jpg',
+    link: '/products',
     number: '07',
   },
 ];
@@ -140,19 +140,17 @@ export function OurSolutions() {
                   />
                   {/* Multi-layer overlay */}
                   <div
-                    className={`absolute inset-0 transition-all duration-500 ${
-                      isActive
+                    className={`absolute inset-0 transition-all duration-500 ${isActive
                         ? 'bg-gradient-to-t from-[#05060a]/95 via-[#05060a]/30 to-transparent'
                         : 'bg-[#05060a]/70'
-                    }`}
+                      }`}
                   />
                 </div>
 
                 {/* Number label (collapsed state) */}
                 <div
-                  className={`absolute top-4 left-0 right-0 flex justify-center transition-opacity duration-300 ${
-                    isActive ? 'opacity-0' : 'opacity-50'
-                  }`}
+                  className={`absolute top-4 left-0 right-0 flex justify-center transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-50'
+                    }`}
                 >
                   <span className="text-[9px] font-mono text-white/60">{product.number}</span>
                 </div>
@@ -197,9 +195,8 @@ export function OurSolutions() {
 
                 {/* Collapsed icon */}
                 <div
-                  className={`absolute bottom-6 left-0 right-0 flex flex-col items-center gap-2 transition-opacity duration-300 ${
-                    isActive ? 'opacity-0' : 'opacity-60'
-                  }`}
+                  className={`absolute bottom-6 left-0 right-0 flex flex-col items-center gap-2 transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-60'
+                    }`}
                 >
                   <Icon strokeWidth={1.5} className="h-5 w-5 text-white" />
                   <span

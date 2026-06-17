@@ -3,18 +3,18 @@ export const siteConfig = {
   description:
     "Glass Ivoire is a leading manufacturer and distributor of high-quality glass products in Abidjan, serving construction, housing, and architectural projects across Côte d'Ivoire.",
   phone: "+225 07 78 41 42 43",
-  address: "Boulevard de Marseille, Abidjan, Côte d'Ivoire",
+  address: "Boulevard de Marseille, Treichville, Abidjan, Côte d'Ivoire",
   whatsapp: "https://wa.me/2250778414243",
   googleMapSrc:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.0737966604606!2d-3.9868911841985565!3d5.284184096981189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc19246da305e5b%3A0x5ca2f68254eaf31f!2sBoulevard%20de%20Marseille!5e0!3m2!1sen!2sci!4v1718385011748!5m2!1sen!2sci",
   categories: [
-    { title: "Tempered & Safety Glass", label: "Safety", accent: "glass-magenta" },
-    { title: "Double Glazing", label: "Energy", accent: "accent-teal" },
-    { title: "Glass Partitions", label: "Workspace", accent: "accent-slate" },
-    { title: "Glass Doors", label: "Entry", accent: "glass-green" },
-    { title: "Mirrors", label: "Reflect", accent: "glass-yellow" },
-    { title: "Façade Glass Panels", label: "Façade", accent: "primary-light" },
-    { title: "Glass Balustrades & Railings", label: "Safety", accent: "primary-dark" },
+    { title: "Aluminium Windows (SOLEAL)", label: "Performance", accent: "glass-magenta" },
+    { title: "Aluminium Sliding Systems (ARTLINE)", label: "Elegance", accent: "accent-teal" },
+    { title: "Double Glazing", label: "Energy", accent: "accent-slate" },
+    { title: "Bulletproof Glass", label: "Security", accent: "glass-green" },
+    { title: "Shower Enclosures", label: "Interiors", accent: "glass-yellow" },
+    { title: "Stained Glass (Vitraux)", label: "Custom", accent: "primary-light" },
+    { title: "Façades (TENTAL)", label: "Architecture", accent: "primary-dark" },
   ],
   projects: [
     {
@@ -39,9 +39,9 @@ export const siteConfig = {
     },
   ],
   trustBadges: [
-    "Certified glass fabrication",
-    "Fast local delivery",
-    "Reliable technical support",
+    "Premium aluminium profiles",
+    "High-precision custom glass cutting",
+    "Endlessly recyclable hydro CIRCAL aluminium",
   ],
   // Google Business info
   rating: 5.0,

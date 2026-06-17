@@ -11,11 +11,11 @@ const navLinks = [
 ];
 
 const productLinks = [
-  { href: '/products/windows', label: 'Aluminum Windows' },
-  { href: '/products/doors', label: 'Aluminum Doors' },
-  { href: '/products/facades', label: 'Facades' },
-  { href: '/products/fire-resistant', label: 'Fire-Resistant Systems' },
-  { href: '/products/interior-walls', label: 'Interior Walls' },
+  { href: '/products#windows', label: 'Aluminium Windows (SOLEAL)' },
+  { href: '/products#doors', label: 'Aluminium Sliding Systems (ARTLINE)' },
+  { href: '/products#facades', label: 'Façades (TENTAL)' },
+  { href: '/products#bulletproof', label: 'Bulletproof Glass' },
+  { href: '/products#shower', label: 'Shower Cabins' },
 ];
 
 // Glass accent colors from logo
@@ -66,7 +66,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm font-light leading-relaxed text-white/60 max-w-sm mb-6">
-              Manufacturer and distributor of premium glass & aluminum systems for Abidjan&apos;s construction, housing, and architectural sectors.
+              Premium manufacturer and distributor of architectural glass and high-performance aluminium systems for Abidjan&apos;s construction and housing sectors.
             </p>
 
             {/* Contact info */}

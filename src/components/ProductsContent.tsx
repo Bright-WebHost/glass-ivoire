@@ -7,70 +7,70 @@ import { Shield, Thermometer, Maximize, DoorOpen, LayoutGrid, Construction, Arro
 
 const products = [
   {
-    id: "tempered-glass",
-    title: "Tempered & Safety Glass",
-    category: "Safety",
-    description: "Heat-treated for maximum durability and impact resistance. Essential for balustrades, storefronts, and high-traffic areas.",
-    image: "https://images.unsplash.com/photo-1541888078652-5ad26a312015?q=80&w=1600&auto=format&fit=crop",
-    icon: Shield,
-    accent: "#8B3A8F",
-    accentBg: "#F5ECF6",
-    features: ["5x stronger than standard", "Safe fragmentation", "High thermal resistance"]
-  },
-  {
-    id: "double-glazing",
-    title: "Double Glazing",
-    category: "Energy Efficiency",
-    description: "Advanced hermetically sealed insulated glass units (IGU). Reduces heat transfer, ensuring optimal indoor climates.",
-    image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1600&auto=format&fit=crop",
-    icon: Thermometer,
-    accent: "#4DADD8",
-    accentBg: "#EBF8FD",
-    features: ["Thermal insulation", "Acoustic noise reduction", "Prevents condensation"]
-  },
-  {
-    id: "facades",
-    title: "Façade Glass Panels",
-    category: "Exteriors",
-    description: "High-performance structural glazing and curtain walls designed to withstand wind loads while creating stunning modern skylines.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop",
-    icon: Construction,
-    accent: "#A8C93A",
-    accentBg: "#F6F9EA",
-    features: ["Wind-load certified", "UV and solar control", "Large-format panels"]
-  },
-  {
-    id: "glass-partitions",
-    title: "Glass Partitions",
-    category: "Interior Spaces",
-    description: "Sleek, floor-to-ceiling interior glass walls that define workspaces without blocking natural light. Available in framed or frameless.",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1600&auto=format&fit=crop",
+    id: "aluminium-windows",
+    title: "Aluminium Windows (SOLEAL)",
+    category: "Performance",
+    description: "High-performance aluminium window systems engineered for architectural elegance, superior thermal insulation, and acoustic performance.",
+    image: "/glass-window.jpg",
     icon: LayoutGrid,
     accent: "#2A6DB5",
     accentBg: "#E8F2FC",
-    features: ["Maximizes daylight", "Seamless integration", "Custom frosting"]
+    features: ["Hydro CIRCAL aluminium", "High thermal resistance", "Custom powder coating"]
   },
   {
-    id: "glass-doors",
-    title: "Glass Doors",
-    category: "Access",
-    description: "Premium glass doors including pivot, sliding, and automated systems engineered for smooth operation and architectural elegance.",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600&auto=format&fit=crop",
+    id: "sliding-systems",
+    title: "Aluminium Sliding Systems",
+    category: "Elegance",
+    description: "Premium sliding systems (ARTLINE) designed for large openings, bringing maximum natural light with minimal visible frames.",
+    image: "/glassdoor.jpg",
     icon: DoorOpen,
+    accent: "#4DADD8",
+    accentBg: "#EBF8FD",
+    features: ["Floor-to-ceiling spans", "Smooth operation", "Maximized daylight"]
+  },
+  {
+    id: "facades",
+    title: "Façades (TENTAL)",
+    category: "Architecture",
+    description: "Innovative curtain wall and façade systems for low-carbon buildings. Designed to withstand wind loads while creating stunning modern skylines.",
+    image: "/Facades.jpg",
+    icon: Construction,
+    accent: "#A8C93A",
+    accentBg: "#F6F9EA",
+    features: ["Wind-load certified", "UV and solar control", "Circular economy focused"]
+  },
+  {
+    id: "bulletproof-glass",
+    title: "Bulletproof Glass",
+    category: "Security",
+    description: "Advanced multi-laminated safety glass designed to withstand ballistic impacts, ensuring maximum security for banks, embassies, and luxury retail.",
+    image: "/fire.jpg",
+    icon: Shield,
+    accent: "#8B3A8F",
+    accentBg: "#F5ECF6",
+    features: ["Ballistic resistance", "Multi-layered lamination", "Uncompromised clarity"]
+  },
+  {
+    id: "shower-cabins",
+    title: "Shower Enclosures",
+    category: "Interiors",
+    description: "Custom-cut tempered glass shower cabins and screens. Precision-engineered for watertight elegance in luxury residential and hotel projects.",
+    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1600&auto=format&fit=crop",
+    icon: Maximize,
     accent: "#5BAD3E",
     accentBg: "#EEF8EA",
-    features: ["Heavy-duty hardware", "Frameless profiles", "High-traffic durability"]
+    features: ["Heavy-duty hardware", "Frameless profiles", "Easy-clean coating"]
   },
   {
-    id: "mirrors",
-    title: "Architectural Mirrors",
-    category: "Reflectivity",
-    description: "Distortion-free, large format mirrors perfect for gyms, lobbies, and luxury residential projects to visually expand spaces.",
-    image: "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1600&auto=format&fit=crop",
-    icon: Maximize,
+    id: "stained-glass",
+    title: "Stained Glass (Vitraux)",
+    category: "Custom Design",
+    description: "Bespoke stained glass and decorative glass art for religious, residential, and commercial projects, combining traditional craftsmanship with modern techniques.",
+    image: "https://images.unsplash.com/photo-1517596048126-778ea2874fc3?q=80&w=1600&auto=format&fit=crop",
+    icon: Thermometer,
     accent: "#E8D84A",
     accentBg: "#FDFBEA",
-    features: ["Crystal clear reflection", "Corrosion-resistant", "Custom edge polishing"]
+    features: ["Handcrafted designs", "Vibrant colors", "Historical restoration"]
   }
 ];
 
