@@ -114,7 +114,7 @@ export function AboutContent() {
         </section>
 
         {/* ── 2. HERITAGE & VISION (Split Layout) ─────────────────────── */}
-        <section className="relative z-20 -mt-10 bg-white pt-20 pb-20 lg:pb-32 lg:pt-32 rounded-t-[3rem] shadow-[0_-20px_40px_rgba(0,0,0,0.05)]">
+        <section className="relative z-20 -mt-10 bg-white pt-10 pb-10 lg:pb-16 lg:pt-16 rounded-t-[3rem] shadow-[0_-20px_40px_rgba(0,0,0,0.05)]">
           {/* Decorative Arch Grid */}
           <div className="absolute inset-0 arch-grid opacity-30 pointer-events-none" />
 
@@ -190,7 +190,7 @@ export function AboutContent() {
         </section>
 
         {/* ── 3. CORE VALUES (Glassmorphism Cards) ────────────────────── */}
-        <section className="bg-surface-1 py-24 lg:py-32 relative">
+        <section className="bg-surface-1 py-10 lg:py-16 relative">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-pale to-transparent" />
           
           <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
@@ -246,7 +246,7 @@ export function AboutContent() {
         </section>
 
         {/* ── 4. THE MANUFACTURING EDGE (Dark Blue Section) ───────────── */}
-        <section className="relative py-24 lg:py-32 overflow-hidden" style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #2A6DB5 100%)" }}>
+        <section className="relative py-10 lg:py-16 overflow-hidden" style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #2A6DB5 100%)" }}>
           {/* Background Elements */}
           <div className="absolute inset-0 arch-grid opacity-20 pointer-events-none" />
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-cyan/20 rounded-full blur-[100px]" />

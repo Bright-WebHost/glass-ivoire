@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${syne.variable} ${jakarta.variable} h-full antialiased`}>
-      <body className="min-h-full bg-white font-sans text-slate-800">{children}</body>
+      <body className="min-h-full bg-white font-sans text-slate-800" suppressHydrationWarning>{children}</body>
     </html>
   );
 }

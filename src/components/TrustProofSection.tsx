@@ -123,11 +123,11 @@ export function TrustSection() {
   const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
-    <section className="bg-surface-1 py-20 lg:py-28" id="trust">
+    <section className="bg-surface-1 py-10 lg:py-16" id="trust">
       {/* Top wavy divider */}
       <div className="divider-blue mb-0" />
 
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 pt-20">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 pt-10">
 
         {/* Header */}
         <div className="mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">

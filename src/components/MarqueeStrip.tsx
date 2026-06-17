@@ -22,7 +22,7 @@ export function MarqueeStrip() {
   const content = [...items, ...items];
 
   return (
-    <div className="relative z-10 overflow-hidden bg-blue py-4 marquee-track">
+    <div className="relative z-10 overflow-hidden bg-[#2A6DB5] py-4 marquee-track">
       {/* Subtle texture overlay */}
       <div className="absolute inset-0 arch-grid opacity-20 pointer-events-none" />
 

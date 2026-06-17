@@ -159,29 +159,17 @@ export function Hero() {
           <div className="h-px w-10 bg-white/40" />
         </motion.div>
 
-        {/* Main headline — 3 lines, massive */}
-        <div className="mb-8 flex flex-col items-center">
-          {/* Line 1 */}
-          <div className="overflow-hidden">
-            <motion.h1
-              key={`h1-${index}`}
-              initial={{ y: '100%' }}
-              animate={{ y: '0%' }}
-              transition={{ duration: 1, delay: 0.05, ease }}
-              className="font-display font-bold text-white text-[clamp(3.5rem,9vw,10rem)] leading-[0.88] tracking-[-0.04em] block"
-            >
-              {slide.headline1}
-            </motion.h1>
-          </div>
-
-          {/* Line 2 — gradient color word */}
-          <div className="overflow-hidden">
-            <motion.h1
-              key={`h2-${index}`}
-              initial={{ y: '100%' }}
-              animate={{ y: '0%' }}
-              transition={{ duration: 1, delay: 0.13, ease }}
-              className="font-display font-bold text-[clamp(3.5rem,9vw,10rem)] leading-[0.88] tracking-[-0.04em] block"
+        {/* Main headline — 1 line */}
+        <div className="mb-8 overflow-hidden px-4">
+          <motion.h1
+            key={`h-${index}`}
+            initial={{ y: '100%' }}
+            animate={{ y: '0%' }}
+            transition={{ duration: 1, delay: 0.05, ease }}
+            className="font-display font-bold text-[clamp(2rem,5vw,6.5rem)] leading-[1.1] tracking-[-0.04em] flex flex-wrap justify-center gap-x-3 md:gap-x-5"
+          >
+            <span className="text-white">{slide.headline1}</span>
+            <span
               style={{
                 background: 'linear-gradient(135deg, #4DADD8 0%, #ffffff 50%, #2A6DB5 100%)',
                 WebkitBackgroundClip: 'text',
@@ -190,21 +178,9 @@ export function Hero() {
               }}
             >
               {slide.headline2}
-            </motion.h1>
-          </div>
-
-          {/* Line 3 */}
-          <div className="overflow-hidden">
-            <motion.h1
-              key={`h3-${index}`}
-              initial={{ y: '100%' }}
-              animate={{ y: '0%' }}
-              transition={{ duration: 1, delay: 0.21, ease }}
-              className="font-display font-bold text-white text-[clamp(3.5rem,9vw,10rem)] leading-[0.88] tracking-[-0.04em] block"
-            >
-              {slide.headline3}
-            </motion.h1>
-          </div>
+            </span>
+            <span className="text-white">{slide.headline3}</span>
+          </motion.h1>
         </div>
 
         {/* Subtitle */}

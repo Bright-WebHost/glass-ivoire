@@ -86,7 +86,7 @@ export function OurSolutions() {
   const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
-    <section className="bg-surface-1 py-20 lg:py-28" id="solutions">
+    <section className="bg-surface-1 py-10 lg:py-16" id="solutions">
       <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-12">
 
         {/* Section header */}
@@ -103,8 +103,7 @@ export function OurSolutions() {
               <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">Our Systems</span>
             </div>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink lg:text-5xl">
-              Engineering for<br />
-              <span className="text-ink-muted">every project.</span>
+              Engineering for <span className="text-ink-muted">every project.</span>
             </h2>
           </div>
           <Link

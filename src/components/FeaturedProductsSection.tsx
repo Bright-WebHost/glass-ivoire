@@ -141,7 +141,7 @@ export function FeaturedProducts() {
   const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
-    <section className="bg-white py-20 lg:py-28" id="featured-products">
+    <section className="bg-white py-10 lg:py-16" id="featured-products">
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
 
         {/* Header */}
