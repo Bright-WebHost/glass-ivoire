@@ -81,11 +81,11 @@ function ProjectBentoCard({ project, index }: { project: typeof projects[0], ind
               {project.location}
             </span>
           </div>
-          
+
           <h3 className="font-display text-2xl lg:text-3xl font-bold text-white tracking-tight mb-3">
             {project.title}
           </h3>
-          
+
           <p className="text-sm font-light leading-relaxed text-white/70 opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100 line-clamp-3 md:line-clamp-2">
             {project.description}
           </p>

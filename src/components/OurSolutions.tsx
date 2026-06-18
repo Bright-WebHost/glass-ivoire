@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   LayoutGrid,
   DoorClosed,
@@ -81,8 +80,6 @@ const products = [
 ];
 
 export function OurSolutions() {
-  const [activeIndex, setActiveIndex] = useState<number>(3);
-
   const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
@@ -115,96 +112,67 @@ export function OurSolutions() {
           </Link>
         </motion.div>
 
-        {/* Product accordion */}
-        <div className="flex h-[520px] w-full gap-1 lg:h-[560px]">
+        {/* Full-Image Glass Cards Grid (3 on top row, 4 on bottom row) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 mt-12">
           {products.map((product, index) => {
-            const isActive = activeIndex === index;
             const Icon = product.icon;
+            
+            // 3 items in the first row (span 4 cols each = 12), 4 items in the second row (span 3 cols each = 12)
+            const colSpanClass = index < 3 ? "lg:col-span-4" : "lg:col-span-3";
 
             return (
               <motion.div
                 key={product.id}
-                layout
-                onMouseEnter={() => setActiveIndex(index)}
-                onClick={() => setActiveIndex(index)}
-                className="group relative overflow-hidden cursor-pointer rounded-2xl"
-                style={{ flex: isActive ? 6 : 1 }}
-                transition={{ duration: 0.6, ease }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease }}
+                className={`group relative flex flex-col justify-end overflow-hidden rounded-[2rem] aspect-[4/5] shadow-card hover:shadow-card-hover transition-shadow duration-500 ${colSpanClass} md:col-span-1`}
               >
-                {/* Background image */}
-                <div className="absolute inset-0">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  {/* Multi-layer overlay */}
-                  <div
-                    className={`absolute inset-0 transition-all duration-500 ${isActive
-                        ? 'bg-gradient-to-t from-[#05060a]/95 via-[#05060a]/30 to-transparent'
-                        : 'bg-[#05060a]/70'
-                      }`}
-                  />
+                {/* Full Background Image */}
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                
+                {/* Dark gradient overlay to ensure text legibility always */}
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+                
+                {/* Floating Icon Top Right */}
+                <div className="absolute top-6 right-6 h-12 w-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 z-20">
+                  <Icon strokeWidth={1.5} className="h-6 w-6 text-white" />
                 </div>
 
-                {/* Number label (collapsed state) */}
-                <div
-                  className={`absolute top-4 left-0 right-0 flex justify-center transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-50'
-                    }`}
-                >
-                  <span className="text-[9px] font-mono text-white/60">{product.number}</span>
-                </div>
-
-                {/* Active expanded content */}
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
-                      className="absolute bottom-0 left-0 right-0 p-6 lg:p-8"
-                    >
-                      {/* Blueprint corner decoration */}
-                      <div className="absolute top-4 right-4 w-8 h-8 border-t border-r border-blue/40" />
-                      <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-white/10" />
-
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="glass rounded-lg p-2">
-                          <Icon strokeWidth={1.5} className="h-4 w-4 text-blue" />
-                        </div>
-                        <span className="text-[9px] font-mono text-white/40">{product.number}</span>
-                      </div>
-                      <h3 className="font-display text-xl font-bold text-white tracking-tight mb-2">
-                        {product.title}
-                      </h3>
-                      <p className="text-xs font-light leading-relaxed text-white/60 mb-6 max-w-xs">
+                {/* Frosted Glass Content Panel */}
+                <div className="relative z-20 m-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 transition-all duration-500 group-hover:bg-white/20">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-white/70 uppercase">
+                      System {product.number}
+                    </span>
+                  </div>
+                  
+                  <h3 className="font-display text-xl lg:text-2xl font-bold text-white tracking-tight mb-3">
+                    {product.title}
+                  </h3>
+                  
+                  {/* Expanding Description */}
+                  <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+                    <div className="overflow-hidden">
+                      <p className="text-sm font-light leading-relaxed text-white/90 mb-6 mt-1">
                         {product.description}
                       </p>
-                      <Link
-                        href={product.link}
-                        className="group/btn glass-blue inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[10px] font-bold tracking-[0.15em] text-blue-light uppercase transition-all duration-300 hover:bg-blue/20"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Learn More
-                        <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                      </Link>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </div>
+                  </div>
 
-                {/* Collapsed icon */}
-                <div
-                  className={`absolute bottom-6 left-0 right-0 flex flex-col items-center gap-2 transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-60'
-                    }`}
-                >
-                  <Icon strokeWidth={1.5} className="h-5 w-5 text-white" />
-                  <span
-                    className="text-[9px] font-bold tracking-widest text-white/70 uppercase [writing-mode:vertical-rl] rotate-180 hidden lg:block"
-                    style={{ maxHeight: '80px', overflow: 'hidden' }}
+                  {/* Always-visible subtle link */}
+                  <Link
+                    href={product.link}
+                    className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-white uppercase opacity-80 group-hover:opacity-100 transition-opacity group/link"
                   >
-                    {product.title}
-                  </span>
+                    View Details
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                  </Link>
                 </div>
               </motion.div>
             );

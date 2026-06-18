@@ -19,7 +19,7 @@ const productLinks = [
 ];
 
 // Glass accent colors from logo
-const glassColors = ["#2A6DB5","#4DADD8","#5BAD3E","#A8C93A","#8B3A8F","#E8D84A"];
+const glassColors = ["#2A6DB5", "#4DADD8", "#5BAD3E", "#A8C93A", "#8B3A8F", "#E8D84A"];
 
 export function Footer() {
   return (
@@ -58,11 +58,11 @@ export function Footer() {
           <div className="lg:col-span-5">
             <Link href="/" className="inline-block mb-6 group">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Glass Ivoire"
-                width={160}
-                height={60}
-                className="h-12 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+                width={80}
+                height={80}
+                className="h-16 w-16 rounded-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
               />
             </Link>
             <p className="text-sm font-light leading-relaxed text-white/60 max-w-sm mb-6">

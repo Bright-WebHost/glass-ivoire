@@ -36,41 +36,39 @@ export function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "py-2" : "py-4"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+          isScrolled 
+            ? "bg-white/95 backdrop-blur-md border-blue-pale shadow-sm py-3" 
+            : "bg-transparent border-white/20 py-5"
         }`}
       >
-        <div
-          className={`mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 lg:px-10 transition-all duration-500 ${
-            isScrolled
-              ? "glass-white rounded-2xl mx-4 lg:mx-8 py-2 shadow-card"
-              : "border-b border-white/20 py-0 bg-transparent"
-          }`}
-        >
+        <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 lg:px-12">
           {/* Logo */}
           <Link href="/" className="relative z-50 flex items-center group" onClick={() => setIsOpen(false)}>
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Glass Ivoire"
-              width={160}
-              height={60}
-              className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              width={64}
+              height={64}
+              className={`h-12 w-12 sm:h-14 sm:w-14 rounded-full object-cover transition-all duration-300 group-hover:scale-105`}
               priority
             />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-2 lg:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative px-4 py-2 text-[12px] font-semibold tracking-[0.1em] uppercase transition-colors duration-200 group ${
+                className={`relative px-4 py-2 text-[11px] font-bold tracking-[0.15em] uppercase transition-colors duration-300 group ${
                   isScrolled ? "text-ink-body hover:text-blue" : "text-white/90 hover:text-white"
                 }`}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-4 right-4 h-px bg-blue scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <span className={`absolute bottom-0 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center ${
+                  isScrolled ? "bg-blue" : "bg-white"
+                }`} />
               </Link>
             ))}
           </nav>
@@ -90,10 +88,10 @@ export function Navbar() {
 
             <Link
               href="/contact"
-              className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-[11px] font-bold tracking-[0.12em] uppercase rounded-full transition-all duration-300 ${
+              className={`hidden lg:inline-flex items-center gap-2 px-6 py-2.5 text-[11px] font-bold tracking-[0.15em] uppercase rounded-full transition-all duration-300 ${
                 isScrolled
                   ? "bg-blue text-white hover:bg-blue-dark shadow-glow-blue-sm"
-                  : "bg-white text-blue hover:bg-blue-pale"
+                  : "bg-white text-ink hover:bg-white/90"
               }`}
             >
               Start Project
@@ -105,7 +103,7 @@ export function Navbar() {
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
               className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200 lg:hidden ${
-                isScrolled || isOpen ? "bg-blue-pale text-blue" : "bg-white/15 text-white backdrop-blur-sm"
+                isScrolled || isOpen ? "bg-surface-2 text-ink hover:text-blue" : "bg-white/10 text-white backdrop-blur-md border border-white/20"
               }`}
               aria-label="Toggle menu"
             >

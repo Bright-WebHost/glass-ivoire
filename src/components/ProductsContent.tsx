@@ -121,7 +121,7 @@ function PremiumProductCard({ product, index }: { product: typeof products[0], i
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128]/80 via-transparent to-transparent" />
-          
+
           <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-3 py-1.5 shadow-sm">
             <span className="h-2 w-2 rounded-full" style={{ backgroundColor: product.accent }} />
             <span className="text-[10px] font-bold tracking-[0.2em] text-ink uppercase">
@@ -131,7 +131,7 @@ function PremiumProductCard({ product, index }: { product: typeof products[0], i
 
           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between z-20">
             <div className="flex items-center gap-3">
-              <div 
+              <div
                 className="flex h-10 w-10 items-center justify-center rounded-xl backdrop-blur-md"
                 style={{ backgroundColor: `${product.accent}90`, color: '#fff' }}
               >
@@ -163,9 +163,9 @@ function PremiumProductCard({ product, index }: { product: typeof products[0], i
           <Link
             href={`/contact?product=${product.id}`}
             className="group/btn inline-flex items-center justify-center gap-2 w-full rounded-xl py-3.5 text-xs font-bold tracking-[0.15em] uppercase transition-all duration-300"
-            style={{ 
-              backgroundColor: isHovered ? product.accent : product.accentBg, 
-              color: isHovered ? '#fff' : product.accent 
+            style={{
+              backgroundColor: isHovered ? product.accent : product.accentBg,
+              color: isHovered ? '#fff' : product.accent
             }}
           >
             Get a Quote

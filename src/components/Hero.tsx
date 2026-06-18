@@ -38,7 +38,7 @@ const ease = [0.76, 0, 0.24, 1] as const;
 const softEase = [0.16, 1, 0.3, 1] as const;
 
 // Logo accent colors for the dot strip
-const colors = ["#2A6DB5","#4DADD8","#5BAD3E","#A8C93A","#8B3A8F","#E8D84A"];
+const colors = ["#2A6DB5", "#4DADD8", "#5BAD3E", "#A8C93A", "#8B3A8F", "#E8D84A"];
 
 export function Hero() {
   const [index, setIndex] = useState(0);
@@ -46,23 +46,27 @@ export function Hero() {
   const [transitioning, setTransitioning] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const prevIndexRef = useRef(index);
+
   const goTo = (next: number) => {
     if (transitioning || next === index) return;
     setPrev(index);
     setIndex(next);
-    setTransitioning(true);
-    setTimeout(() => { setPrev(null); setTransitioning(false); }, 1400);
   };
 
   useEffect(() => {
+    if (prevIndexRef.current !== index) {
+      setPrev(prevIndexRef.current);
+      setTransitioning(true);
+      const timer = setTimeout(() => { setPrev(null); setTransitioning(false); }, 1400);
+      prevIndexRef.current = index;
+      return () => clearTimeout(timer);
+    }
+  }, [index]);
+
+  useEffect(() => {
     timerRef.current = setInterval(() => {
-      setIndex(i => {
-        const next = (i + 1) % slides.length;
-        setPrev(i);
-        setTransitioning(true);
-        setTimeout(() => { setPrev(null); setTransitioning(false); }, 1400);
-        return next;
-      });
+      setIndex(i => (i + 1) % slides.length);
     }, DURATION);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, []);
@@ -135,7 +139,7 @@ export function Hero() {
             animate={{ opacity: p.op, x: 0 }}
             transition={{ duration: 1.2, delay: 0.7 + i * 0.2, ease: softEase }}
             className="absolute rounded-xl animate-float-slow"
-            style={{ backgroundColor: p.color, width: p.w, height: p.h, bottom: (p as {bottom?: string}).bottom, right: (p as {right?: string}).right, rotate: `${p.rot}deg` }}
+            style={{ backgroundColor: p.color, width: p.w, height: p.h, bottom: (p as { bottom?: string }).bottom, right: (p as { right?: string }).right, rotate: `${p.rot}deg` }}
           />
         ))}
       </div>
@@ -233,7 +237,7 @@ export function Hero() {
             <div className="flex items-center gap-8">
               {[
                 { value: "200+", label: "Projects" },
-                { value: "10+",  label: "Years" },
+                { value: "10+", label: "Years" },
                 { value: "12K+", label: "m² Glass" },
               ].map((s, i) => (
                 <div key={i} className="text-center sm:text-left">
@@ -254,11 +258,10 @@ export function Hero() {
                   className="group relative flex items-center justify-center"
                 >
                   <span
-                    className={`block rounded-full transition-all duration-500 ${
-                      i === index
+                    className={`block rounded-full transition-all duration-500 ${i === index
                         ? 'w-8 h-2 bg-white'
                         : 'w-2 h-2 bg-white/30 hover:bg-white/60'
-                    }`}
+                      }`}
                   />
                   {/* Progress fill on active dot */}
                   {i === index && (

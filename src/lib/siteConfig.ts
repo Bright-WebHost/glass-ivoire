@@ -3,8 +3,15 @@ export const siteConfig = {
   description:
     "Glass Ivoire is a leading manufacturer and distributor of high-quality glass products in Abidjan, serving construction, housing, and architectural projects across Côte d'Ivoire.",
   phone: "+225 07 78 41 42 43",
+  email: "info@glassivoire.ci",
+  salesEmail: "sales@glassivoire.ci",
   address: "Boulevard de Marseille, Treichville, Abidjan, Côte d'Ivoire",
   whatsapp: "https://wa.me/2250778414243",
+  businessHours: {
+    weekdays: "8:00 AM - 5:30 PM",
+    saturday: "9:00 AM - 1:00 PM",
+    sunday: "Closed",
+  },
   googleMapSrc:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.0737966604606!2d-3.9868911841985565!3d5.284184096981189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc19246da305e5b%3A0x5ca2f68254eaf31f!2sBoulevard%20de%20Marseille!5e0!3m2!1sen!2sci!4v1718385011748!5m2!1sen!2sci",
   categories: [
