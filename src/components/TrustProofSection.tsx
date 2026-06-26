@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, History, Wrench, Leaf } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n';
 
 const features = [
   {
@@ -43,7 +44,7 @@ const features = [
   }
 ];
 
-function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
+function FeatureCard({ feature, index, content }: { feature: typeof features[0]; index: number; content: any }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
@@ -106,13 +107,13 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
 
         {/* Text */}
         <h3 className="font-display text-2xl font-bold text-ink tracking-tight leading-none mb-0.5 group-hover:text-blue transition-colors duration-300" style={isHovered ? { color: feature.color } : {}}>
-          {feature.title}
+          {content?.title}
         </h3>
         <h4 className="font-display text-2xl font-light text-ink-muted tracking-tight mb-4">
-          {feature.subtitle}
+          {content?.subtitle}
         </h4>
         <p className="text-sm font-light leading-relaxed text-ink-muted">
-          {feature.description}
+          {content?.description}
         </p>
       </div>
     </motion.div>
@@ -120,7 +121,9 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
 }
 
 export function TrustSection() {
+  const { t } = useTranslation();
   const ease = [0.16, 1, 0.3, 1] as const;
+  const featuresContent = t('trust.features');
 
   return (
     <section className="bg-surface-1 py-10 lg:py-16" id="trust">
@@ -139,11 +142,11 @@ export function TrustSection() {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-blue" />
-              <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">Quality Assurance</span>
+              <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">{t('trust.tag')}</span>
             </div>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink lg:text-5xl">
-              We take care of<br />
-              <span className="gradient-text-multi">our customers.</span>
+              {t('trust.heading1')}<br />
+              <span className="gradient-text-multi">{t('trust.heading2')}</span>
             </h2>
           </motion.div>
 
@@ -156,9 +159,9 @@ export function TrustSection() {
             className="flex gap-8"
           >
             {[
-              { num: "200+", label: "Projects" },
-              { num: "10+", label: "Years" },
-              { num: "ISO", label: "Certified" },
+              { num: "200+", label: t('trust.stats.projects') },
+              { num: "10+", label: t('trust.stats.years') },
+              { num: "ISO", label: t('trust.stats.certified') },
             ].map((s, i) => (
               <div key={i} className="text-center">
                 <p className="font-display text-3xl font-bold text-blue">{s.num}</p>
@@ -171,7 +174,7 @@ export function TrustSection() {
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {features.map((feature, i) => (
-            <FeatureCard key={i} feature={feature} index={i} />
+            <FeatureCard key={i} feature={feature} index={i} content={featuresContent[i]} />
           ))}
         </div>
       </div>

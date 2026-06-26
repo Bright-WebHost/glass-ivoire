@@ -4,34 +4,9 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from '@/lib/i18n';
 
-// ── Fresh, high-quality glass/architecture images ──────────────────────────
-const slides = [
-  {
-    src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=3200&auto=format&fit=crop",
-    headline1: "Glass That",
-    headline2: "Transforms",
-    headline3: "Spaces.",
-    sub: "Structural glazing & aluminum systems engineered for landmark architecture.",
-    tag: "Structural Glazing",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=3200&auto=format&fit=crop",
-    headline1: "Precision",
-    headline2: "Crafted",
-    headline3: "Facades.",
-    sub: "Curtain-wall systems certified to international wind-load standards.",
-    tag: "Aluminum Facades",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=3200&auto=format&fit=crop",
-    headline1: "Luxury",
-    headline2: "Meets",
-    headline3: "Clarity.",
-    sub: "Floor-to-ceiling glazing for high-end residential and commercial projects.",
-    tag: "Premium Enclosures",
-  },
-];
+
 
 const DURATION = 6000;
 const ease = [0.76, 0, 0.24, 1] as const;
@@ -41,6 +16,9 @@ const softEase = [0.16, 1, 0.3, 1] as const;
 const colors = ["#2A6DB5", "#4DADD8", "#5BAD3E", "#A8C93A", "#8B3A8F", "#E8D84A"];
 
 export function Hero() {
+  const { t } = useTranslation();
+  const slides = t('hero.slides') as any[];
+  
   const [index, setIndex] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
   const [transitioning, setTransitioning] = useState(false);
@@ -86,7 +64,7 @@ export function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1.4, ease }}
           >
-            <img src={slides[prev].src} alt="" className="h-full w-full object-cover" />
+            <img src={["https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=3200&auto=format&fit=crop", "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=3200&auto=format&fit=crop", "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=3200&auto=format&fit=crop"][prev]} alt="" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#0D1F3C]/30 via-transparent to-[#0D1F3C]/80" />
             <div className="absolute inset-0 bg-[#0D1F3C]/30" />
           </motion.div>
@@ -101,7 +79,7 @@ export function Hero() {
         transition={{ duration: 8, ease: "easeOut" }}
       >
         <img
-          src={slide.src}
+          src={["https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=3200&auto=format&fit=crop", "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=3200&auto=format&fit=crop", "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=3200&auto=format&fit=crop"][index]}
           alt={slide.headline1}
           className="h-full w-full object-cover"
         />
@@ -209,14 +187,14 @@ export function Hero() {
             href="/projects"
             className="group flex items-center gap-3 bg-white text-blue px-9 py-4 text-[11px] font-bold tracking-[0.2em] uppercase rounded-full transition-all duration-300 hover:bg-blue hover:text-white hover:shadow-glow-blue hover:scale-[1.03]"
           >
-            View Our Work
+            {t('hero.viewWork')}
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
           <Link
             href="/contact"
             className="group flex items-center gap-3 border border-white/25 bg-white/10 backdrop-blur-sm text-white px-9 py-4 text-[11px] font-bold tracking-[0.2em] uppercase rounded-full transition-all duration-300 hover:bg-white/20"
           >
-            Get a Quote
+            {t('hero.getQuote')}
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </motion.div>
@@ -236,9 +214,9 @@ export function Hero() {
             {/* Left: stats */}
             <div className="flex items-center gap-8">
               {[
-                { value: "200+", label: "Projects" },
-                { value: "10+", label: "Years" },
-                { value: "12K+", label: "m² Glass" },
+                { value: "200+", label: t('hero.stats.projects') },
+                { value: "10+", label: t('hero.stats.years') },
+                { value: "12K+", label: t('hero.stats.glass') },
               ].map((s, i) => (
                 <div key={i} className="text-center sm:text-left">
                   <p className="font-display text-2xl font-bold text-white leading-none">{s.value}</p>
@@ -281,7 +259,7 @@ export function Hero() {
             {/* Right: location + color strip */}
             <div className="flex flex-col items-end gap-2 hidden sm:flex">
               <p className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">
-                Abidjan · Côte d'Ivoire
+                {t('hero.location')}
               </p>
               {/* Logo color strip */}
               <div className="flex gap-1.5">
@@ -303,7 +281,7 @@ export function Hero() {
       >
         <div className="h-16 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent" />
         <span className="text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase [writing-mode:vertical-rl] rotate-180">
-          Scroll
+          {t('hero.scroll')}
         </span>
         <motion.div
           animate={{ y: [0, 5, 0] }}

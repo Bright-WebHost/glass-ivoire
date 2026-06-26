@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useRef, useState } from 'react';
+import { useTranslation } from '@/lib/i18n';
 
 const products = [
   {
@@ -44,7 +45,7 @@ const products = [
   },
 ];
 
-function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
+function ProductCard({ product, index, content, viewDetailsText }: { product: typeof products[0]; index: number, content: any, viewDetailsText: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
@@ -65,7 +66,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Link href={`/products/${product.id}`}>
+      <Link href="/products">
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -86,17 +87,16 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
           <div className="relative h-56 overflow-hidden">
             <img
               src={product.image}
-              alt={product.title}
+              alt={content?.title || ''}
               className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
 
-            {/* Category chip */}
             <div
               className="absolute top-3 left-3 px-3 py-1 rounded-full text-[9px] font-bold tracking-[0.2em] uppercase"
               style={{ backgroundColor: product.accentBg, color: product.accent }}
             >
-              {product.category}
+              {content?.category}
             </div>
 
             {/* ID */}
@@ -105,22 +105,20 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
             </div>
           </div>
 
-          {/* Content */}
           <div className="relative z-20 p-5">
             <h3 className="font-display text-lg font-bold text-ink tracking-tight mb-2 group-hover:text-blue transition-colors duration-300">
-              {product.title}
+              {content?.title}
             </h3>
             <p className="text-xs font-light leading-relaxed text-ink-muted mb-5">
-              {product.description}
+              {content?.description}
             </p>
 
-            {/* Bottom CTA bar */}
             <div
               className="flex items-center justify-between pt-4 border-t"
               style={{ borderColor: `${product.accent}20` }}
             >
               <div className="flex items-center gap-2 text-[10px] font-bold tracking-[0.15em] text-ink-dim uppercase group-hover:text-blue transition-colors duration-300">
-                View Details
+                {viewDetailsText}
                 <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
               </div>
               <div
@@ -138,7 +136,9 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
 }
 
 export function FeaturedProducts() {
+  const { t } = useTranslation();
   const ease = [0.16, 1, 0.3, 1] as const;
+  const productsContent = t('featured.products');
 
   return (
     <section className="bg-white py-10 lg:py-16" id="featured-products">
@@ -154,11 +154,11 @@ export function FeaturedProducts() {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-blue" />
-              <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">Technical Portfolio</span>
+              <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">{t('featured.tag')}</span>
             </div>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink lg:text-5xl">
-              Engineering<br />
-              <span className="gradient-text">Excellence.</span>
+              {t('featured.heading1')}<br />
+              <span className="gradient-text">{t('featured.heading2')}</span>
             </h2>
           </motion.div>
 
@@ -172,16 +172,15 @@ export function FeaturedProducts() {
               href="/products"
               className="group inline-flex items-center gap-2 bg-blue-ice border border-blue-pale rounded-full px-6 py-3 text-[11px] font-bold tracking-[0.15em] text-blue uppercase transition-all duration-300 hover:bg-blue hover:text-white hover:shadow-glow-blue-sm"
             >
-              All Products
+              {t('featured.allProducts')}
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </motion.div>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
           {products.map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
+            <ProductCard key={product.id} product={product} index={index} content={productsContent[index]} viewDetailsText={t('featured.viewDetails')} />
           ))}
         </div>
       </div>

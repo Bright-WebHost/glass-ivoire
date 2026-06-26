@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -26,8 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${jakarta.variable} h-full antialiased`}>
-      <body className="min-h-full bg-white font-sans text-slate-800" suppressHydrationWarning>{children}</body>
+    <html lang="fr" className={`${syne.variable} ${jakarta.variable} h-full antialiased`}>
+      <body className="min-h-full bg-white font-sans text-slate-800" suppressHydrationWarning>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }

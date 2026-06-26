@@ -1,7 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/lib/siteConfig';
 import { ArrowUpRight, MapPin, Phone } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n';
 
 const navLinks = [
   { href: '/about', label: 'About Us' },
@@ -22,6 +25,9 @@ const productLinks = [
 const glassColors = ["#2A6DB5", "#4DADD8", "#5BAD3E", "#A8C93A", "#8B3A8F", "#E8D84A"];
 
 export function Footer() {
+  const { t } = useTranslation();
+  const productLinks = t('footer.productLinks') as any[];
+  
   return (
     <footer
       className="relative overflow-hidden pt-16 pb-10"
@@ -66,7 +72,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm font-light leading-relaxed text-white/60 max-w-sm mb-6">
-              Premium manufacturer and distributor of architectural glass and high-performance aluminium systems for Abidjan&apos;s construction and housing sectors.
+              {t('footer.description')}
             </p>
 
             {/* Contact info */}
@@ -87,14 +93,14 @@ export function Footer() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-5 py-2.5 text-[11px] font-bold tracking-[0.12em] text-white/80 uppercase transition-all duration-300 hover:bg-white/25 hover:text-white"
             >
-              WhatsApp Us
+              {t('footer.whatsapp')}
               <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
 
           {/* Navigate */}
           <div className="lg:col-span-3">
-            <h4 className="text-[9px] font-bold tracking-[0.3em] text-white/40 uppercase mb-5">Navigate</h4>
+            <h4 className="text-[9px] font-bold tracking-[0.3em] text-white/40 uppercase mb-5">{t('footer.navigate')}</h4>
             <ul className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -102,7 +108,7 @@ export function Footer() {
                     href={link.href}
                     className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200 hover:pl-1 inline-block"
                   >
-                    {link.label}
+                    {t(`nav.${link.label.toLowerCase().replace(' us', '')}`)}
                   </Link>
                 </li>
               ))}
@@ -111,7 +117,7 @@ export function Footer() {
 
           {/* Products */}
           <div className="lg:col-span-4">
-            <h4 className="text-[9px] font-bold tracking-[0.3em] text-white/40 uppercase mb-5">Products</h4>
+            <h4 className="text-[9px] font-bold tracking-[0.3em] text-white/40 uppercase mb-5">{t('footer.productsHeader')}</h4>
             <ul className="flex flex-col gap-3">
               {productLinks.map((link) => (
                 <li key={link.href}>
@@ -133,10 +139,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[10px] uppercase tracking-[0.1em] text-white/35">
-          <p>© {new Date().getFullYear()} Glass Ivoire. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Glass Ivoire. {t('footer.rights')}</p>
           <div className="flex gap-8">
-            <Link href="/privacy" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white/70 transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-white/70 transition-colors">{t('footer.privacy')}</Link>
+            <Link href="/terms" className="hover:text-white/70 transition-colors">{t('footer.terms')}</Link>
           </div>
         </div>
       </div>

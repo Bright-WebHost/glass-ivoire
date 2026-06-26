@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Wind, Recycle, Leaf } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n';
 
 const stats = [
   { icon: Wind, value: "0.6", unit: "Uf", label: "Thermal Efficiency", color: "#2A6DB5", bg: "#E8F2FC" },
@@ -12,6 +13,7 @@ const stats = [
 ];
 
 export function SustainabilitySection() {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -72,10 +74,10 @@ export function SustainabilitySection() {
                 <div className="h-8 w-8 rounded-lg bg-blue-ice flex items-center justify-center">
                   <Leaf className="h-4 w-4 text-blue" strokeWidth={1.5} />
                 </div>
-                <span className="text-[9px] font-bold tracking-[0.15em] text-ink-muted uppercase">Certified</span>
+                <span className="text-[9px] font-bold tracking-[0.15em] text-ink-muted uppercase">{t('sustainability.certified')}</span>
               </div>
               <p className="text-sm font-bold text-ink">ISO 14001</p>
-              <p className="text-[10px] text-ink-muted">Environmental Standard</p>
+              <p className="text-[10px] text-ink-muted">{t('sustainability.standard')}</p>
             </motion.div>
 
             {/* Floating colored glass panel decorations */}
@@ -114,23 +116,23 @@ export function SustainabilitySection() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px w-8 bg-blue" />
-                <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">Environmental Impact</span>
+                <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">{t('sustainability.tag')}</span>
               </div>
 
               <h2 className="font-display text-4xl font-bold leading-[1.0] tracking-tight text-ink mb-5 lg:text-5xl">
-                Decarbonizing<br />
-                <span className="gradient-text">Architecture.</span>
+                {t('sustainability.heading1')}<br />
+                <span className="gradient-text">{t('sustainability.heading2')}</span>
               </h2>
 
               <p className="text-base font-light leading-relaxed text-ink-muted mb-8 max-w-lg">
-                Our structural systems go beyond standard compliance — engineered to integrate circular economy principles, maximize thermal efficiency, and utilize up to 75% recycled aluminum.
+                {t('sustainability.description')}
               </p>
 
               <Link
                 href="/sustainability"
                 className="group inline-flex items-center gap-3 bg-blue text-white rounded-full px-7 py-3.5 text-[11px] font-bold tracking-[0.15em] uppercase transition-all duration-300 hover:bg-blue-dark hover:shadow-glow-blue hover:scale-[1.02] mb-10"
               >
-                Our Eco-Approach
+                {t('sustainability.link')}
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </motion.div>
@@ -158,7 +160,7 @@ export function SustainabilitySection() {
                       {stat.value}<span className="text-sm">{stat.unit}</span>
                     </p>
                     <p className="text-[9px] font-bold tracking-[0.15em] text-ink-muted uppercase mt-1">
-                      {stat.label}
+                      {i === 0 ? t('sustainability.stats.thermal') : i === 1 ? t('sustainability.stats.recycled') : t('sustainability.stats.carbon')}
                     </p>
                   </motion.div>
                 );

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import { useTranslation } from '@/lib/i18n';
 
 const projects = [
   {
@@ -52,7 +53,7 @@ const projects = [
   }
 ];
 
-function ProjectBentoCard({ project, index }: { project: typeof projects[0], index: number }) {
+function ProjectBentoCard({ project, index, content }: { project: typeof projects[0], index: number, content: any }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -63,7 +64,7 @@ function ProjectBentoCard({ project, index }: { project: typeof projects[0], ind
     >
       <img
         src={project.image}
-        alt={project.title}
+        alt={content?.title || ''}
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
       {/* Dark gradient overlay that gets stronger on hover */}
@@ -74,20 +75,20 @@ function ProjectBentoCard({ project, index }: { project: typeof projects[0], ind
         <div className="translate-y-8 transition-transform duration-500 group-hover:translate-y-0">
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-md px-3 py-1 text-[10px] font-bold tracking-[0.15em] text-white uppercase border border-white/20">
-              {project.category}
+              {content?.category}
             </span>
             <span className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.15em] text-white/70 uppercase">
               <MapPin className="h-3 w-3" />
-              {project.location}
+              {content?.location}
             </span>
           </div>
 
           <h3 className="font-display text-2xl lg:text-3xl font-bold text-white tracking-tight mb-3">
-            {project.title}
+            {content?.title}
           </h3>
 
           <p className="text-sm font-light leading-relaxed text-white/70 opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100 line-clamp-3 md:line-clamp-2">
-            {project.description}
+            {content?.description}
           </p>
         </div>
 
@@ -103,7 +104,9 @@ function ProjectBentoCard({ project, index }: { project: typeof projects[0], ind
 }
 
 export function ProjectsContent() {
+  const { t } = useTranslation();
   const ease = [0.16, 1, 0.3, 1] as const;
+  const projectsContent = t('projectsPage.items');
 
   return (
     <div className="min-h-screen bg-[#05060A]">
@@ -128,15 +131,15 @@ export function ProjectsContent() {
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-10 bg-[#4DADD8]/50" />
               <span className="text-[10px] font-bold tracking-[0.3em] text-[#4DADD8] uppercase">
-                Featured Work
+                {t('projectsPage.hero.tag')}
               </span>
             </div>
             <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-white lg:text-7xl mb-6">
-              Engineering the<br />
-              <span className="text-white/40">modern skyline.</span>
+              {t('projectsPage.hero.title1')}<br />
+              <span className="text-white/40">{t('projectsPage.hero.title2')}</span>
             </h1>
             <p className="text-lg font-light leading-relaxed text-white/60 max-w-2xl mb-10">
-              Explore our curated portfolio of landmark architectural glazing projects, bespoke luxury housing, and high-performance structural systems across Abidjan and Côte d'Ivoire.
+              {t('projectsPage.hero.description')}
             </p>
           </motion.div>
         </div>
@@ -146,7 +149,7 @@ export function ProjectsContent() {
       <section className="relative z-20 mx-auto max-w-[1600px] px-6 lg:px-12 pb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[350px] gap-4 lg:gap-6">
           {projects.map((project, index) => (
-            <ProjectBentoCard key={project.id} project={project} index={index} />
+            <ProjectBentoCard key={project.id} project={project} index={index} content={projectsContent[index]} />
           ))}
         </div>
       </section>

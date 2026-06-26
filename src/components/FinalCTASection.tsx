@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowUpRight, Phone } from 'lucide-react';
 import { siteConfig } from '@/lib/siteConfig';
 import { useRef, useState } from 'react';
+import { useTranslation } from '@/lib/i18n';
 
 // Magnetic button
 function MagneticButton({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) {
@@ -36,7 +37,9 @@ function MagneticButton({ href, children, className }: { href: string; children:
 }
 
 export function FinalCTASection() {
+  const { t } = useTranslation();
   const ease = [0.16, 1, 0.3, 1] as const;
+  const badges = t('cta.badges') as string[];
 
   // Glass panel colors from logo for decorative elements
   const panels = [
@@ -99,7 +102,7 @@ export function FinalCTASection() {
               className="flex items-center gap-4 mb-10"
             >
               <div className="h-px w-8 bg-white/50" />
-              <span className="text-[10px] font-bold tracking-[0.3em] text-white/70 uppercase">Start Your Vision</span>
+              <span className="text-[10px] font-bold tracking-[0.3em] text-white/70 uppercase">{t('cta.tag')}</span>
             </motion.div>
 
             <div className="overflow-hidden mb-3">
@@ -110,7 +113,7 @@ export function FinalCTASection() {
                 transition={{ duration: 1.1, ease }}
                 className="font-display text-6xl font-bold leading-[0.9] tracking-[-0.03em] text-white md:text-8xl"
               >
-                Let&apos;s build
+                {t('cta.heading1')}
               </motion.h2>
             </div>
             <div className="overflow-hidden mb-10">
@@ -121,7 +124,7 @@ export function FinalCTASection() {
                 transition={{ duration: 1.1, delay: 0.1, ease }}
                 className="font-display text-6xl font-bold leading-[0.9] tracking-[-0.03em] text-white/30 italic md:text-8xl"
               >
-                the future.
+                {t('cta.heading2')}
               </motion.h2>
             </div>
 
@@ -132,7 +135,7 @@ export function FinalCTASection() {
               transition={{ duration: 0.8, delay: 0.3, ease }}
               className="text-lg font-light leading-relaxed text-white/65 max-w-md"
             >
-              Precision glass engineering for landmark projects. Our technical team is ready to review your specifications and supply your site with excellence.
+              {t('cta.description')}
             </motion.p>
           </div>
 
@@ -150,7 +153,7 @@ export function FinalCTASection() {
               className="group relative inline-flex items-center justify-between gap-4 bg-white text-blue px-10 py-5 text-sm font-bold tracking-[0.12em] uppercase rounded-2xl transition-all duration-300 hover:bg-blue-pale hover:shadow-xl w-full lg:w-80 overflow-hidden"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative z-10">Get In Touch</span>
+              <span className="relative z-10">{t('cta.button')}</span>
               <ArrowUpRight className="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </MagneticButton>
 
@@ -167,7 +170,7 @@ export function FinalCTASection() {
 
             {/* Trust badges */}
             <div className="flex items-center gap-4 mt-2">
-              {["ISO Certified", "10+ Years", "200+ Projects"].map((badge, i) => (
+              {badges.map((badge, i) => (
                 <div key={i} className="flex items-center gap-1.5">
                   <div className="h-1.5 w-1.5 rounded-full bg-white/40" />
                   <span className="text-[9px] font-bold tracking-widest text-white/50 uppercase">{badge}</span>

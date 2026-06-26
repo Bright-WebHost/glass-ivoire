@@ -6,6 +6,7 @@ import { Target, Leaf, Lightbulb, CheckCircle2, Factory, Globe } from 'lucide-re
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { FinalCTASection } from '@/components/FinalCTASection';
+import { useTranslation } from '@/lib/i18n';
 
 const values = [
   {
@@ -39,6 +40,10 @@ const stats = [
 ];
 
 export function AboutContent() {
+  const { t } = useTranslation();
+  const pillarsContent = t('aboutPage.pillars.items') as any[];
+  const statsContent = t('aboutPage.manufacturing.stats') as any[];
+  
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
@@ -80,7 +85,7 @@ export function AboutContent() {
             >
               <div className="h-px w-10 bg-white/40" />
               <span className="text-[10px] font-bold tracking-[0.3em] text-white/80 uppercase">
-                Our Story
+                {t('aboutPage.hero.tag')}
               </span>
               <div className="h-px w-10 bg-white/40" />
             </motion.div>
@@ -92,7 +97,7 @@ export function AboutContent() {
                 transition={{ duration: 1, delay: 0.1, ease }}
                 className="font-display font-bold text-white text-[clamp(3rem,8vw,8rem)] leading-[0.9] tracking-[-0.03em]"
               >
-                Crafting Light.
+                {t('aboutPage.hero.title1')}
               </motion.h1>
             </div>
             <div className="overflow-hidden">
@@ -107,7 +112,7 @@ export function AboutContent() {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Defining Space.
+                {t('aboutPage.hero.title2')}
               </motion.h1>
             </div>
           </motion.div>
@@ -130,20 +135,20 @@ export function AboutContent() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-px w-8 bg-blue" />
-                  <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">The Glass Ivoire Legacy</span>
+                  <span className="text-[10px] font-bold tracking-[0.3em] text-blue uppercase">{t('aboutPage.legacy.tag')}</span>
                 </div>
 
                 <h2 className="font-display text-4xl lg:text-6xl font-bold text-ink leading-[1.05] tracking-tight mb-8">
-                  Elevating Abidjan's <br />
-                  <span className="text-ink-muted italic font-light">Architectural Horizon.</span>
+                  {t('aboutPage.legacy.title1')} <br />
+                  <span className="text-ink-muted italic font-light">{t('aboutPage.legacy.title2')}</span>
                 </h2>
 
                 <div className="space-y-6 text-lg font-light leading-relaxed text-ink-muted max-w-xl">
                   <p>
-                    Glass Ivoire is a premier manufacturer and distributor of high-quality architectural glass and aluminum systems. Established in June 2023 at Boulevard de Marseille, Treichville, we serve as the vital link between visionary architectural design and flawless physical execution in Côte d'Ivoire.
+                    {t('aboutPage.legacy.p1')}
                   </p>
                   <p>
-                    Our mission is simple yet ambitious: to deliver durable, elegant glazing solutions accompanied by unmatched local service. We blend technical rigor with premium materials like endlessly recyclable Hydro CIRCAL aluminium, ensuring every facade, partition, and structural enclosure we produce enhances modern design, maximizes safety, and optimizes energy efficiency.
+                    {t('aboutPage.legacy.p2')}
                   </p>
                 </div>
               </motion.div>
@@ -181,7 +186,7 @@ export function AboutContent() {
                   transition={{ duration: 0.6, delay: 0.4, ease }}
                   className="absolute top-1/2 left-[15%] w-24 h-24 bg-blue-light/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-glow-blue animate-float"
                 >
-                  <span className="text-white font-bold tracking-widest text-[10px] uppercase text-center leading-tight">Since<br/>2023</span>
+                  <span className="text-white font-bold tracking-widest text-[10px] uppercase text-center leading-tight">{t('aboutPage.legacy.since')}<br/>{t('aboutPage.legacy.year')}</span>
                 </motion.div>
               </div>
 
@@ -201,9 +206,9 @@ export function AboutContent() {
               transition={{ duration: 0.7, ease }}
               className="text-center mb-16"
             >
-              <h2 className="font-display text-3xl lg:text-5xl font-bold text-ink mb-4">The Pillars of Our Process</h2>
+              <h2 className="font-display text-3xl lg:text-5xl font-bold text-ink mb-4">{t('aboutPage.pillars.title')}</h2>
               <p className="text-ink-muted text-lg max-w-2xl mx-auto font-light">
-                What drives our engineering and manufacturing excellence daily.
+                {t('aboutPage.pillars.subtitle')}
               </p>
             </motion.div>
 
@@ -233,10 +238,10 @@ export function AboutContent() {
                     </div>
                     
                     <h3 className="font-display text-2xl font-bold text-ink mb-4 tracking-tight group-hover:text-blue transition-colors">
-                      {val.title}
+                      {pillarsContent[i]?.title}
                     </h3>
                     <p className="text-ink-muted leading-relaxed font-light">
-                      {val.description}
+                      {pillarsContent[i]?.description}
                     </p>
                   </motion.div>
                 );
@@ -264,21 +269,21 @@ export function AboutContent() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-px w-8 bg-white/40" />
-                  <span className="text-[10px] font-bold tracking-[0.3em] text-white/80 uppercase">Global Standards, Local Facility</span>
+                  <span className="text-[10px] font-bold tracking-[0.3em] text-white/80 uppercase">{t('aboutPage.manufacturing.tag')}</span>
                 </div>
                 <h2 className="font-display text-4xl lg:text-5xl font-bold leading-[1.1] mb-8">
-                  State-of-the-Art <br />
-                  <span className="text-cyan">Fabrication in Abidjan.</span>
+                  {t('aboutPage.manufacturing.title1')} <br />
+                  <span className="text-cyan">{t('aboutPage.manufacturing.title2')}</span>
                 </h2>
                 <p className="text-white/70 text-lg font-light leading-relaxed mb-10 max-w-lg">
-                  By maintaining a cutting-edge local workshop, we eliminate long import delays for fabricated components while ensuring every cut, join, and seal meets strict European ISO standards. We don't just assemble; we engineer.
+                  {t('aboutPage.manufacturing.description')}
                 </p>
 
                 <div className="grid grid-cols-2 gap-x-8 gap-y-10">
                   {stats.map((stat, i) => (
                     <div key={i}>
                       <p className="font-display text-4xl font-bold text-white mb-1">{stat.value}</p>
-                      <p className="text-[10px] font-bold tracking-[0.2em] text-white/50 uppercase">{stat.label}</p>
+                      <p className="text-[10px] font-bold tracking-[0.2em] text-white/50 uppercase">{statsContent[i]?.label}</p>
                     </div>
                   ))}
                 </div>
@@ -297,10 +302,10 @@ export function AboutContent() {
                 </div>
                 {/* Floating tags */}
                 <div className="absolute -bottom-6 -left-6 bg-white text-blue px-6 py-4 rounded-2xl shadow-xl flex items-center gap-3 font-bold text-[11px] tracking-widest uppercase">
-                  <Factory className="h-4 w-4" /> Local Workshop
+                  <Factory className="h-4 w-4" /> {t('aboutPage.manufacturing.workshop')}
                 </div>
                 <div className="absolute -top-6 -right-6 bg-cyan text-blue-dark px-6 py-4 rounded-2xl shadow-xl flex items-center gap-3 font-bold text-[11px] tracking-widest uppercase">
-                  <Globe className="h-4 w-4" /> Global Tech
+                  <Globe className="h-4 w-4" /> {t('aboutPage.manufacturing.tech')}
                 </div>
               </motion.div>
 

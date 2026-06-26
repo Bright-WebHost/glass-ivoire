@@ -1,24 +1,13 @@
 'use client';
 
-const items = [
-  "Structural Glazing",
-  "Tempered Safety Glass",
-  "Aluminum Facades",
-  "ISO-Certified Systems",
-  "Thermal Efficiency",
-  "Double Glazing",
-  "Fire-Resistant Systems",
-  "Acoustic Performance",
-  "Interior Walls",
-  "Sun Visors",
-  "Precision Engineering",
-  "Abidjan & Côte d'Ivoire",
-];
+import { useTranslation } from '@/lib/i18n';
 
 // Logo accent colors for the separators
 const separatorColors = ["#2A6DB5","#4DADD8","#5BAD3E","#A8C93A","#8B3A8F","#E8D84A"];
 
 export function MarqueeStrip() {
+  const { t } = useTranslation();
+  const items = t('marquee') as string[];
   const content = [...items, ...items];
 
   return (

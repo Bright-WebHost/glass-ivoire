@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/siteConfig";
+import { useTranslation } from "@/lib/i18n";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -18,6 +19,11 @@ const navItems = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t, language, setLanguage } = useTranslation();
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'fr' ? 'en' : 'fr');
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 60);
@@ -65,7 +71,7 @@ export function Navbar() {
                   isScrolled ? "text-ink-body hover:text-blue" : "text-white/90 hover:text-white"
                 }`}
               >
-                {item.label}
+                {t(`nav.${item.label.toLowerCase()}`)}
                 <span className={`absolute bottom-0 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center ${
                   isScrolled ? "bg-blue" : "bg-white"
                 }`} />
@@ -94,9 +100,25 @@ export function Navbar() {
                   : "bg-white text-ink hover:bg-white/90"
               }`}
             >
-              Start Project
+              {t('nav.startProject')}
               <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
+
+            <div className="flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`transition-colors ${language === 'en' ? (isScrolled ? 'text-ink' : 'text-white') : (isScrolled ? 'text-slate-400 hover:text-ink' : 'text-white/50 hover:text-white')}`}
+              >
+                EN
+              </button>
+              <span className={`font-normal ${isScrolled ? 'text-slate-300' : 'text-white/30'}`}>|</span>
+              <button
+                onClick={() => setLanguage('fr')}
+                className={`transition-colors ${language === 'fr' ? (isScrolled ? 'text-ink' : 'text-white') : (isScrolled ? 'text-slate-400 hover:text-ink' : 'text-white/50 hover:text-white')}`}
+              >
+                FR
+              </button>
+            </div>
 
             <button
               type="button"
@@ -154,7 +176,7 @@ export function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="flex w-full items-center justify-between py-5 text-2xl font-display font-bold tracking-tight text-ink hover:text-blue transition-colors"
                   >
-                    <span>{item.label}</span>
+                    <span>{t(`nav.${item.label.toLowerCase()}`)}</span>
                     <span className="text-xs font-sans font-normal text-ink-dim">0{i + 1}</span>
                   </Link>
                 </motion.div>
@@ -172,7 +194,7 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="flex w-full items-center justify-between bg-blue px-8 py-5 text-sm font-bold tracking-widest text-white uppercase rounded-2xl hover:bg-blue-dark transition-all duration-300 glow-blue"
               >
-                Start Your Project
+                {t('nav.startYourProject')}
                 <ArrowUpRight className="h-5 w-5" />
               </Link>
             </motion.div>

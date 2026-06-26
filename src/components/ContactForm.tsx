@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
+import { useTranslation } from "@/lib/i18n";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -8,6 +9,8 @@ const fadeUp = {
 };
 
 export function ContactForm() {
+  const { t } = useTranslation();
+  
   return (
     <motion.form
       initial="hidden"
@@ -18,18 +21,18 @@ export function ContactForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="space-y-2 text-sm font-medium text-slate-700">
-          Name
+          {t('contactForm.name')}
           <input
             type="text"
-            placeholder="Your name"
+            placeholder={t('contactForm.namePlaceholder')}
             className="w-full rounded-3xl border border-white/40 bg-white/50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none backdrop-blur-sm transition focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </label>
         <label className="space-y-2 text-sm font-medium text-slate-700">
-          Email
+          {t('contactForm.email')}
           <input
             type="email"
-            placeholder="name@example.com"
+            placeholder={t('contactForm.emailPlaceholder')}
             className="w-full rounded-3xl border border-white/40 bg-white/50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none backdrop-blur-sm transition focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </label>
@@ -37,30 +40,30 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="space-y-2 text-sm font-medium text-slate-700">
-          Company Name <span className="text-slate-400 font-normal">(Optional)</span>
+          {t('contactForm.company')} <span className="text-slate-400 font-normal">{t('contactForm.optional')}</span>
           <input
             type="text"
-            placeholder="Your company"
+            placeholder={t('contactForm.companyPlaceholder')}
             className="w-full rounded-3xl border border-white/40 bg-white/50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none backdrop-blur-sm transition focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </label>
         <label className="space-y-2 text-sm font-medium text-slate-700">
-          Project Type
+          {t('contactForm.projectType')}
           <select className="w-full rounded-3xl border border-white/40 bg-white/50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none backdrop-blur-sm transition focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none">
-            <option value="">Select project type...</option>
-            <option value="residential">Residential</option>
-            <option value="commercial">Commercial</option>
-            <option value="industrial">Industrial</option>
-            <option value="other">Other</option>
+            <option value="">{t('contactForm.projectTypePlaceholder')}</option>
+            <option value="residential">{t('contactForm.types.residential')}</option>
+            <option value="commercial">{t('contactForm.types.commercial')}</option>
+            <option value="industrial">{t('contactForm.types.industrial')}</option>
+            <option value="other">{t('contactForm.types.other')}</option>
           </select>
         </label>
       </div>
 
       <label className="space-y-2 text-sm font-medium text-slate-700 block">
-        Message
+        {t('contactForm.message')}
         <textarea
           rows={5}
-          placeholder="Tell us about your project requirements..."
+          placeholder={t('contactForm.messagePlaceholder')}
           className="w-full rounded-[1.5rem] border border-white/40 bg-white/50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none backdrop-blur-sm transition focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
       </label>
@@ -68,7 +71,7 @@ export function ContactForm() {
         type="submit"
         className="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-md transition hover:bg-primary-dark hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
       >
-        Send Inquiry
+        {t('contactForm.submit')}
       </button>
     </motion.form>
   );

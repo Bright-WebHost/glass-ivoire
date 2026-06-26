@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Shield, Thermometer, Maximize, DoorOpen, LayoutGrid, Construction, ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n';
 
 const products = [
   {
@@ -66,7 +67,7 @@ const products = [
     title: "Stained Glass (Vitraux)",
     category: "Custom Design",
     description: "Bespoke stained glass and decorative glass art for religious, residential, and commercial projects, combining traditional craftsmanship with modern techniques.",
-    image: "https://images.unsplash.com/photo-1517596048126-778ea2874fc3?q=80&w=1600&auto=format&fit=crop",
+    image: "/stained-glass.jpg",
     icon: Thermometer,
     accent: "#E8D84A",
     accentBg: "#FDFBEA",
@@ -74,7 +75,7 @@ const products = [
   }
 ];
 
-function PremiumProductCard({ product, index }: { product: typeof products[0], index: number }) {
+function PremiumProductCard({ product, index, content, getQuoteText }: { product: typeof products[0], index: number, content: any, getQuoteText: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
@@ -117,7 +118,7 @@ function PremiumProductCard({ product, index }: { product: typeof products[0], i
         <div className="relative h-64 overflow-hidden shrink-0">
           <img
             src={product.image}
-            alt={product.title}
+            alt={content?.title || ''}
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128]/80 via-transparent to-transparent" />
@@ -125,7 +126,7 @@ function PremiumProductCard({ product, index }: { product: typeof products[0], i
           <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-3 py-1.5 shadow-sm">
             <span className="h-2 w-2 rounded-full" style={{ backgroundColor: product.accent }} />
             <span className="text-[10px] font-bold tracking-[0.2em] text-ink uppercase">
-              {product.category}
+              {content?.category}
             </span>
           </div>
 
@@ -144,15 +145,15 @@ function PremiumProductCard({ product, index }: { product: typeof products[0], i
         {/* Content body */}
         <div className="relative z-20 flex flex-col flex-grow p-6 lg:p-8">
           <h3 className="font-display text-2xl font-bold text-ink tracking-tight mb-3 group-hover:text-blue transition-colors duration-300">
-            {product.title}
+            {content?.title}
           </h3>
           <p className="text-sm font-light leading-relaxed text-ink-muted mb-6 flex-grow">
-            {product.description}
+            {content?.description}
           </p>
 
           {/* Features list */}
           <ul className="mb-8 space-y-2">
-            {product.features.map((feature, i) => (
+            {content?.features.map((feature: string, i: number) => (
               <li key={i} className="flex items-start gap-2 text-[11px] font-semibold text-ink-body uppercase tracking-wider">
                 <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: product.accent }} />
                 {feature}
@@ -168,7 +169,7 @@ function PremiumProductCard({ product, index }: { product: typeof products[0], i
               color: isHovered ? '#fff' : product.accent
             }}
           >
-            Get a Quote
+            {getQuoteText}
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
           </Link>
         </div>
@@ -178,7 +179,9 @@ function PremiumProductCard({ product, index }: { product: typeof products[0], i
 }
 
 export function ProductsContent() {
+  const { t } = useTranslation();
   const ease = [0.16, 1, 0.3, 1] as const;
+  const productsContent = t('productsPage.items');
 
   return (
     <div className="min-h-screen bg-surface-1">
@@ -203,14 +206,14 @@ export function ProductsContent() {
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-10 bg-blue-light/50" />
               <span className="text-[10px] font-bold tracking-[0.3em] text-blue-light uppercase">
-                Technical Portfolio
+                {t('productsPage.hero.tag')}
               </span>
             </div>
             <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-white lg:text-7xl mb-6">
-              Glass categories for <span className="text-white/40">every build.</span>
+              {t('productsPage.hero.title1')} <span className="text-white/40">{t('productsPage.hero.title2')}</span>
             </h1>
             <p className="text-lg font-light leading-relaxed text-white/70 max-w-2xl mb-10">
-              Choose from our extensive portfolio of glass systems, engineered for safety, thermal performance, and architectural elegance across Côte d'Ivoire.
+              {t('productsPage.hero.description')}
             </p>
           </motion.div>
         </div>
@@ -220,7 +223,7 @@ export function ProductsContent() {
       <section className="relative z-20 mx-auto max-w-[1600px] px-6 lg:px-12 -mt-10 lg:-mt-20 pb-24 lg:pb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {products.map((product, index) => (
-            <PremiumProductCard key={product.id} product={product} index={index} />
+            <PremiumProductCard key={product.id} product={product} index={index} content={productsContent[index]} getQuoteText={t('productsPage.card.getQuote')} />
           ))}
         </div>
       </section>
@@ -237,16 +240,16 @@ export function ProductsContent() {
             className="max-w-2xl mx-auto"
           >
             <h2 className="font-display text-4xl font-bold tracking-tight text-ink mb-6 lg:text-5xl">
-              Ready to start your project?
+              {t('productsPage.cta.title')}
             </h2>
             <p className="text-base font-light leading-relaxed text-ink-muted mb-10">
-              Our technical team in Abidjan is ready to assist you with specifications, structural calculations, and custom glass fabrication for your next building.
+              {t('productsPage.cta.description')}
             </p>
             <Link
               href="/contact"
               className="group inline-flex items-center gap-3 bg-[#2A6DB5] text-white rounded-full px-8 py-4 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[#1B4F8A] hover:shadow-glow-blue hover:scale-[1.02]"
             >
-              Request a Custom Quote
+              {t('productsPage.cta.button')}
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </motion.div>
