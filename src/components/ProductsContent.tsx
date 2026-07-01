@@ -2,7 +2,8 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 import { Shield, Thermometer, Maximize, DoorOpen, LayoutGrid, Construction, ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
 
@@ -93,8 +94,7 @@ function PremiumProductCard({ product, index, content, getQuoteText }: { product
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className="h-full"
     >
@@ -181,7 +181,9 @@ function PremiumProductCard({ product, index, content, getQuoteText }: { product
 export function ProductsContent() {
   const { t } = useTranslation();
   const ease = [0.16, 1, 0.3, 1] as const;
-  const productsContent = t('productsPage.items');
+const productsContent = t('productsPage.items');
+const reduceMotion = useReducedMotion();
+const Container = (reduceMotion ? 'div' : motion.div) as any;
 
   return (
     <div className="min-h-screen bg-surface-1">
@@ -197,10 +199,10 @@ export function ProductsContent() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12">
-          <motion.div
+          <Container
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease }}
+            transition={{ duration: 0.5, ease }}
             className="max-w-3xl"
           >
             <div className="flex items-center gap-3 mb-6">
@@ -215,7 +217,7 @@ export function ProductsContent() {
             <p className="text-lg font-light leading-relaxed text-white/70 max-w-2xl mb-10">
               {t('productsPage.hero.description')}
             </p>
-          </motion.div>
+          </Container>
         </div>
       </section>
 

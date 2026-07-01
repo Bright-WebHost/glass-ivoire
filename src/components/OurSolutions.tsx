@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+
 import {
   LayoutGrid,
   DoorClosed,
@@ -76,11 +76,7 @@ export function OurSolutions() {
       <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-12">
 
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease }}
+        <div
           className="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6"
         >
           <div>
@@ -99,7 +95,7 @@ export function OurSolutions() {
             {t('solutions.viewAll')}
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
-        </motion.div>
+        </div>
 
         {/* Full-Image Glass Cards Grid (3 on top row, 4 on bottom row) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 mt-12">
@@ -110,12 +106,8 @@ export function OurSolutions() {
             const colSpanClass = index < 3 ? "lg:col-span-4" : "lg:col-span-3";
 
             return (
-              <motion.div
+              <div
                 key={solution.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease }}
                 className={`group relative flex flex-col justify-end overflow-hidden rounded-[2rem] aspect-[4/5] shadow-card hover:shadow-card-hover transition-shadow duration-500 ${colSpanClass} md:col-span-1`}
               >
                 {/* Full Background Image */}
@@ -163,7 +155,7 @@ export function OurSolutions() {
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </Link>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
