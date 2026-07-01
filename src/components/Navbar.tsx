@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/siteConfig";
@@ -25,6 +26,10 @@ export function Navbar() {
     setLanguage(language === 'fr' ? 'en' : 'fr');
   };
 
+  // Detect if we are on the contact page
+  const pathname = usePathname();
+  const isContact = pathname.startsWith('/contact');
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -43,7 +48,7 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
-          isScrolled 
+          isScrolled || isContact
             ? "bg-white/95 backdrop-blur-md border-blue-pale shadow-sm py-3" 
             : "bg-transparent border-white/20 py-5"
         }`}
@@ -68,7 +73,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`relative px-4 py-2 text-[11px] font-bold tracking-[0.15em] uppercase transition-colors duration-300 group ${
-                  isScrolled ? "text-ink-body hover:text-blue" : "text-white/90 hover:text-white"
+                  isScrolled || isContact ? "text-ink-body hover:text-blue" : "text-white/90 hover:text-white"
                 }`}
               >
                 {t(`nav.${item.label.toLowerCase()}`)}
@@ -84,9 +89,9 @@ export function Navbar() {
             {/* Phone number (desktop only) */}
             <a
               href={siteConfig.whatsapp}
-              className={`hidden xl:flex items-center gap-2 text-[11px] font-semibold transition-colors duration-200 ${
-                isScrolled ? "text-ink-muted hover:text-blue" : "text-white/70 hover:text-white"
-              }`}
+              className={`flex items-center gap-2 text-[11px] font-semibold transition-colors duration-200 ${
+                  isScrolled || isContact ? "text-ink-muted hover:text-blue" : "text-white/70 hover:text-white"
+                }`}
             >
               <Phone className="h-3 w-3" />
               {siteConfig.phone}
@@ -107,14 +112,14 @@ export function Navbar() {
             <div className="flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase">
               <button
                 onClick={() => setLanguage('en')}
-                className={`transition-colors ${language === 'en' ? (isScrolled ? 'text-ink' : 'text-white') : (isScrolled ? 'text-slate-400 hover:text-ink' : 'text-white/50 hover:text-white')}`}
+                className={`transition-colors ${language === 'en' ? (isScrolled || isContact ? 'text-ink' : 'text-white') : (isScrolled || isContact ? 'text-slate-400 hover:text-ink' : 'text-white/50 hover:text-white')}`}
               >
                 EN
               </button>
-              <span className={`font-normal ${isScrolled ? 'text-slate-300' : 'text-white/30'}`}>|</span>
+              <span className={`font-normal ${isScrolled || isContact ? 'text-slate-300' : 'text-white/30'}`}>|</span>
               <button
                 onClick={() => setLanguage('fr')}
-                className={`transition-colors ${language === 'fr' ? (isScrolled ? 'text-ink' : 'text-white') : (isScrolled ? 'text-slate-400 hover:text-ink' : 'text-white/50 hover:text-white')}`}
+                className={`transition-colors ${language === 'fr' ? (isScrolled || isContact ? 'text-ink' : 'text-white') : (isScrolled || isContact ? 'text-slate-400 hover:text-ink' : 'text-white/50 hover:text-white')}`}
               >
                 FR
               </button>
@@ -125,7 +130,7 @@ export function Navbar() {
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
               className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200 lg:hidden ${
-                isScrolled || isOpen ? "bg-surface-2 text-ink hover:text-blue" : "bg-white/10 text-white backdrop-blur-md border border-white/20"
+                isScrolled || isOpen || isContact ? "bg-surface-2 text-ink hover:text-blue" : "bg-white/10 text-white backdrop-blur-md border border-white/20"
               }`}
               aria-label="Toggle menu"
             >

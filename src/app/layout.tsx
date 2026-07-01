@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   title: "Glass Ivoire — Glass Manufacturer & Distributor",
   description:
     "Glass Ivoire provides premium glass manufacturing and distribution for construction, housing, and architectural projects in Abidjan and Côte d'Ivoire.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

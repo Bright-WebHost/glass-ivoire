@@ -140,10 +140,6 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[10px] uppercase tracking-[0.1em] text-white/35">
           <p>© {new Date().getFullYear()} Glass Ivoire. {t('footer.rights')}</p>
-          <div className="flex gap-8">
-            <Link href="/privacy" className="hover:text-white/70 transition-colors">{t('footer.privacy')}</Link>
-            <Link href="/terms" className="hover:text-white/70 transition-colors">{t('footer.terms')}</Link>
-          </div>
         </div>
       </div>
     </footer>

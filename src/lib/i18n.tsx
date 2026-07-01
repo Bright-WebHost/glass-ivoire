@@ -361,7 +361,7 @@ const en: Dictionary = {
     },
     message: "Message",
     messagePlaceholder: "Tell us about your project requirements...",
-    submit: "Send Inquiry"
+    submit: "Send Enquiry"
   },
   contactPage: {
     hero: {
@@ -373,7 +373,7 @@ const en: Dictionary = {
       headquarters: "Our Headquarters",
       contact: "Contact",
       phone: "Phone",
-      general: "General Inquiries",
+      general: "General Enquiries",
       sales: "Sales",
       whatsapp: "WhatsApp Us"
     },
