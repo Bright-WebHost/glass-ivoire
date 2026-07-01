@@ -64,7 +64,7 @@ export function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1.4, ease }}
           >
-            <img src={["https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=3200&auto=format&fit=crop", "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=3200&auto=format&fit=crop", "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=3200&auto=format&fit=crop"][prev]} alt="" className="h-full w-full object-cover" />
+            <img src={["https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1920&auto=format&fit=crop", "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1920&auto=format&fit=crop", "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1920&auto=format&fit=crop"][prev]} alt="" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#0D1F3C]/30 via-transparent to-[#0D1F3C]/80" />
             <div className="absolute inset-0 bg-[#0D1F3C]/30" />
           </motion.div>
@@ -79,7 +79,7 @@ export function Hero() {
         transition={{ duration: 8, ease: "easeOut" }}
       >
         <img
-          src={["https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=3200&auto=format&fit=crop", "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=3200&auto=format&fit=crop", "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=3200&auto=format&fit=crop"][index]}
+          src={["https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1920&auto=format&fit=crop", "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1920&auto=format&fit=crop", "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1920&auto=format&fit=crop"][index]}
           alt={slide.headline1}
           className="h-full w-full object-cover"
         />

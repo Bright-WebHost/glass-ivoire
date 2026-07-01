@@ -191,7 +191,7 @@ const Container = (reduceMotion ? 'div' : motion.div) as any;
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-[#0D1F3C]">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=3200&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1920&auto=format&fit=crop"
             alt="Glass architecture"
             className="h-full w-full object-cover opacity-40 mix-blend-overlay"
           />
